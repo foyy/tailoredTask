@@ -12,6 +12,8 @@ import { WebBrowser } from "expo";
 
 import { MonoText } from "../components/StyledText";
 
+
+
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
     header: null
@@ -19,22 +21,32 @@ export default class HomeScreen extends React.Component {
 
   render() {
     return (
+
+      // the Square!
       <View style={styles.container}>
         <ScrollView
           style={styles.container}
           contentContainerStyle={styles.contentContainer}
         >
+
           <View style={styles.welcomeContainer}>
-            <Image
-              source={
-                __DEV__
-                  ? require("../assets/images/square.png")
-                  : require("../assets/images/robot-prod.png")
-              }
-              style={styles.welcomeImage}
-            />
+            <TouchableOpacity
+              onPress={this.testingOnPress}
+            >
+              <Image
+                source={
+                  __DEV__
+                    ? require("../assets/images/square.png")
+                    : require("../assets/images/robot-prod.png")
+                }
+                style={styles.welcomeImage}
+              />
+            </TouchableOpacity>    
           </View>
 
+         
+
+{/* //everything below the sqauare! */}
           <View style={styles.getStartedContainer}>
             {this._maybeRenderDevelopmentModeWarning()}
 
@@ -116,6 +128,12 @@ export default class HomeScreen extends React.Component {
       "https://docs.expo.io/versions/latest/guides/up-and-running.html#can-t-see-your-changes"
     );
   };
+
+  testingOnPress = () => {
+    WebBrowser.openBrowserAsync(
+      "https://google.com"
+    );
+  }
 }
 
 const styles = StyleSheet.create({
