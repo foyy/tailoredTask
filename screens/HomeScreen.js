@@ -10,9 +10,8 @@ import {
 } from "react-native";
 import { WebBrowser } from "expo";
 
+import HealthScreen from "./HealthScreen";
 import { MonoText } from "../components/StyledText";
-
-
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -21,17 +20,17 @@ export default class HomeScreen extends React.Component {
 
   render() {
     return (
-
       // the Square!
       <View style={styles.container}>
         <ScrollView
           style={styles.container}
           contentContainerStyle={styles.contentContainer}
         >
-
           <View style={styles.welcomeContainer}>
             <TouchableOpacity
-              onPress={this.testingOnPress}
+              onPress={() =>
+                this.props.navigation.navigate("Health", { name: "Jane" })
+              }
             >
               <Image
                 source={
@@ -41,12 +40,10 @@ export default class HomeScreen extends React.Component {
                 }
                 style={styles.welcomeImage}
               />
-            </TouchableOpacity>    
+            </TouchableOpacity>
           </View>
 
-         
-
-{/* //everything below the sqauare! */}
+          {/* //everything below the sqauare! */}
           <View style={styles.getStartedContainer}>
             {this._maybeRenderDevelopmentModeWarning()}
 
@@ -130,10 +127,8 @@ export default class HomeScreen extends React.Component {
   };
 
   testingOnPress = () => {
-    WebBrowser.openBrowserAsync(
-      "https://google.com"
-    );
-  }
+    WebBrowser.openBrowserAsync("https://google.com");
+  };
 }
 
 const styles = StyleSheet.create({
