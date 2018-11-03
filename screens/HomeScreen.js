@@ -10,7 +10,6 @@ import {
 } from "react-native";
 import { WebBrowser } from "expo";
 
-import HealthScreen from "./HealthScreen";
 import { MonoText } from "../components/StyledText";
 
 export default class HomeScreen extends React.Component {
@@ -29,7 +28,7 @@ export default class HomeScreen extends React.Component {
           <View style={styles.welcomeContainer}>
             <TouchableOpacity
               onPress={() =>
-                this.props.navigation.navigate("Health", { name: "Jane" })
+                this.props.navigation.navigate("HealthScreen", { name: "Jane" })
               }
             >
               <Image

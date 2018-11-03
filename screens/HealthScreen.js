@@ -1,5 +1,5 @@
 import React from "react";
-import { ScrollView, StyleSheet } from "react-native";
+import { ScrollView, StyleSheet, Button, View, Text } from "react-native";
 import { createStackNavigator } from "react-navigation";
 
 class HealthScreen extends React.Component {
@@ -9,10 +9,21 @@ class HealthScreen extends React.Component {
   render() {
     const { navigate } = this.props.navigation;
     return (
-      <Button
-        title="Go to Jane's profile"
-        onPress={() => navigate("Profile", { name: "Jane" })}
-      />
+      <ScrollView style={styles.container}>
+        <View>
+          <Text style={styles.basicText}>Hey man!</Text>
+        </View>
+
+        {/* Go Home Button */}
+        <Button
+          title="Go Back Home"
+          onPress={() =>
+            navigate("Main", {
+              name: "Home"
+            })
+          }
+        />
+      </ScrollView>
     );
   }
 }
@@ -20,5 +31,17 @@ class HealthScreen extends React.Component {
 export default createStackNavigator({
   Health: {
     screen: HealthScreen
+  }
+});
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    paddingTop: 15,
+    backgroundColor: "#fff"
+  },
+  basicText: {
+    fontFamily: "Courier",
+    textAlign: "center"
   }
 });
